@@ -26,7 +26,6 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
 |name|string|null: false|
 |email|string|null: false|
 |password|integer|null: false|
@@ -43,14 +42,13 @@ Things you may want to cover:
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :users
-- belongs to :groups
+- belongs_to :user
+- belongs to :group
 
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_id|integer|null: false|
-|group_name|string|null: false|
+|name|string|null: false|
 
 ### Association
 - has_many :users, through: :users_groups
@@ -62,7 +60,6 @@ Things you may want to cover:
 |------|----|-------|
 |body|text|null: true|
 |image|string|null: true|
-|time|timestamp|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
