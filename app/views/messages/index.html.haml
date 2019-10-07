@@ -1,0 +1,51 @@
+.leftcolumn
+  .leftcolumn__top
+    .leftcolumn__top__name
+      name
+    .leftcolumn__top__icons
+      = link_to "", class: "group-edit" do
+        = fa_icon 'edit'
+        %span<>
+      = link_to "", class: "account-edit" do
+        = fa_icon 'cog'
+  .leftcolumn__groups
+    .leftcolumn__groups__message
+      .leftcolumn__groups__message__name
+        sample group1
+      .leftcolumn__groups__message__latest
+        sample latest message
+    .leftcolumn__groups__latest2
+
+.contents
+  .contents__top
+    %a.contents__top__editbtn{:href => ""} Edit
+    .contents__top__left
+      .contents__top__left__name
+        sample group name
+      .contents__top__left__member
+        Member : sample member1 samplemember2 
+      
+
+
+
+  .contents__messages
+    .contents__messages__message
+      .contents__messages__message__sender
+        sample sender1
+      .contents__messages__message__date
+        2019/10/07(mon)
+      .contents__messages__message__time
+        17:20:00
+      .contents__messages__message__body
+        sample message1
+
+  .postbox
+    .postbox__text
+      .postbox__text__text
+        type message
+      .postbox__text__picon
+        = link_to "", class: "messege-send" do
+          = fa_icon 'image'
+    %a.postbox__postbtn{:href => ""} Send
+  
+    
