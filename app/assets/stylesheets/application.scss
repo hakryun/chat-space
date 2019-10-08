@@ -2,9 +2,6 @@
 @import "./variable";
 @import "font-awesome";
 @import "./messages";
-// @import "groups";
-// @import "messages";
-
   
 .leftcolumn {  
   height: 100vh;
@@ -12,13 +9,13 @@
   background-color: #2f3e51;
   float: left;
 
-  .leftcolumn__top {
+  &__top {
     height: 82px;
     width: 100%;
     background-color: #253141;
    
 
-    .leftcolumn__top__name {
+    &__name {
       font-size: 16px;
       font-weight: bold;
       line-height: 82px;
@@ -27,7 +24,7 @@
       float: left;
     }
 
-    .leftcolumn__top__icons {
+    &__icons {
       margin-right: 20px;
       line-height: 82px;
       // text-decoration-line: none;
@@ -45,14 +42,14 @@
 
   .leftcolumn__groups {
     padding: 0 20px;
-    .leftcolumn__groups__message {
+    &__message {
       height: 91px;
-      .leftcolumn__groups__message__name {                 
+      &__name {                 
         font-size: 15px;
         color: $white;
         margin-top: 20px;
       }
-      .leftcolumn__groups__message__latest {
+      &__latest {
         font-size: 11px;
         color: $white;
         margin-top: 5px;
@@ -68,21 +65,21 @@
   height: 100%;
   float: left;
 
-  .contents__top {
+  &__top {
     height: 82px;
     width: calc(100vw - 300px);
     border-bottom: solid 1px #eeeeee;
     
-    .contents__top__left {
+    &__left {
       float: left;
-      .contents__top__left__name {
+      &__name {
         font-size: 20px;
         color: #333333;
         padding-top: 20px;
         margin-left: 40px; 
       }    
 
-      .contents__top__left__member {
+      &__member {
         font-size: 12px;
         margin-top: 10px;
         margin-left: 40px;
@@ -91,7 +88,7 @@
       }
     }
 
-    .contents__top__editbtn {
+    &__editbtn {
       // display: block;
       float: right;
       color: #38aef0;
@@ -104,13 +101,13 @@
       text-decoration-line: none;
     }
   }
-  .contents__messages {
+  &__messages {
     clear: both;
     height: calc(100vh - 82px - 90px);
     background-color: #fafafa;
-    .contents__messages__message {      
+    &__message {      
       margin-left: 40px;
-      .contents__messages__message__sender {
+      &__sender {
         clear: both;
         font-size: 16px;
         font-weight: bold;
@@ -118,21 +115,21 @@
         margin-top: 40px;
         float: left;
       }
-      .contents__messages__message__date {
+      &__date {
         font-size: 12px;
         color: #999999;
         margin-top: 45px;
         margin-left: 10px;
         float: left;
       }
-      .contents__messages__message__time {
+      &__time {
         font-size: 12px;
         color: #999999;
         margin-top: 45px;
         float: left;
         
       }
-      .contents__messages__message__body {
+      &__body {
         font-size: 14px;
         color: #434a54;
         clear: left;
@@ -147,7 +144,7 @@
   background-color: rgb(190, 184, 184);
   // float: left;
   
-  .postbox__text {
+  &__text {
     height: 50px;
     width: 80%;
     min-width: 300px;
@@ -157,7 +154,7 @@
     margin-left: 40px;
     float: left;
 
-    .postbox__text__text {
+    &__text {
       font-size: 16px;
       color: #434a54;
       // display: inline;
@@ -165,13 +162,13 @@
       margin-left: 10px;
       float: left;
     }
-    .postbox__text__picon {
+    &__picon {
       // line-height: 40px;
       margin-right: 10px;
       float: right;
     }
   }
-  .postbox__postbtn {   
+  &__postbtn {   
     height: 50px;
     line-height: 50px;
     padding: 0 20px;
