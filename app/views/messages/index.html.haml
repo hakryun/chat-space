@@ -18,16 +18,13 @@
 
 .contents
   .contents__top
-    %a.contents__top__editbtn{href: ""} Edit
+    = link_to "Edit", "", class: "contents__top__editbtn"
     .contents__top__left
       .contents__top__left__name
         sample group name
       .contents__top__left__member
         Member : sample member1 samplemember2 
       
-
-
-
   .contents__messages
     .contents__messages__message
       .contents__messages__message__sender
@@ -46,6 +43,6 @@
       .postbox__text__picon
         = link_to "", class: "messege-send" do
           = fa_icon 'image'
-    %a.postbox__postbtn{href: ""} Send
+    = link_to "Send", "", class: "postbox__postbtn"
   
     
