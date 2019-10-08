@@ -27,8 +27,6 @@
     &__icons {
       margin-right: 20px;
       line-height: 82px;
-      // text-decoration-line: none;
-      // text-decoration: none;
       float: right;
       .group-edit {
         color: $white;
@@ -59,7 +57,6 @@
   }
 }
 
-
 .contents {
   width: calc(100vw - 300px);
   height: 100%;
@@ -84,16 +81,12 @@
         margin-top: 10px;
         margin-left: 40px;
         color: #999999;
-        // float: left;
       }
     }
 
     &__editbtn {
-      // display: block;
       float: right;
       color: #38aef0;
-      // line-height: 82px;
-      // height: 40px;
       border: solid 1px;
       padding: 10px 20px;
       margin-top: 20px;
@@ -142,7 +135,6 @@
   height: 90px;
   width: 100%;
   background-color: rgb(190, 184, 184);
-  // float: left;
   
   &__text {
     height: 50px;
@@ -157,13 +149,11 @@
     &__text {
       font-size: 16px;
       color: #434a54;
-      // display: inline;
       line-height: 50px;
       margin-left: 10px;
       float: left;
     }
     &__picon {
-      // line-height: 40px;
       margin-right: 10px;
       float: right;
     }
