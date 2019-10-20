@@ -1,48 +1,29 @@
-.leftcolumn
-  .leftcolumn__top
-    .leftcolumn__top__name
-      name
-    .leftcolumn__top__icons
-      = link_to "", class: "group-edit" do
-        = fa_icon 'edit'
-        %span<>
-      = link_to "", class: "account-edit" do
-        = fa_icon 'cog'
-  .leftcolumn__groups
-    .leftcolumn__groups__message
-      .leftcolumn__groups__message__name
-        sample group1
-      .leftcolumn__groups__message__latest
-        sample latest message
-    .leftcolumn__groups__latest2
+.wrapper
 
-.contents
-  .contents__top
-    = link_to "Edit", "", class: "contents__top__editbtn"
-    .contents__top__left
-      .contents__top__left__name
-        sample group name
-      .contents__top__left__member
-        Member : sample member1 samplemember2 
-      
-  .contents__messages
-    .contents__messages__message
-      .contents__messages__message__sender
-        sample sender1
-      .contents__messages__message__date
-        2019/10/07(mon)
-      .contents__messages__message__time
-        17:20:00
-      .contents__messages__message__body
-        sample message1
+  = render 'shared/side_bar'
 
-  .postbox
-    .postbox__text
-      .postbox__text__text
-        type message
-      .postbox__text__picon
-        = link_to "", class: "messege-send" do
-          = fa_icon 'image'
-    = link_to "Send", "", class: "postbox__postbtn"
-  
+  .chat
+    .header
+      .left-header
+        .left-header__title
+          - if @group
+            = @group.name
+            %ul.left-header__members              
+              - @group.users.each do |user|         
+                %li.member
+                  = user.name  
+              
+      .right-header
+        = link_to 'Edit', edit_group_path(@group.id), class: 'right-header__button'
+
+    .messages
+      = render partial: 'message', collection: @messages
     
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class:'form__message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
