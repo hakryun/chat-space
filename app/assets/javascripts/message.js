@@ -33,10 +33,8 @@ $(document).on('turbolinks:load', function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html)
-      $('.form').reset();
-      // $('.form__message').val('')
-      // $('#message_image').val('')
+      $('.messages').append(html);
+      $('.new_message')[0].reset();
       $('.messages').animate({
         scrollTop: $('.messages')[0].scrollHeight
       })
@@ -45,7 +43,7 @@ $(document).on('turbolinks:load', function(){
       alert('error');
     })
     .always(function(){
-      $('.form__submit').removeAttr('disabled');
+      $('.form__submit').removeAttr('disabled')
     })
   })
 });
