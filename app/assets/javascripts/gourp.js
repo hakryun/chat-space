@@ -32,7 +32,7 @@ $(document).on('turbolinks:load', function(){
     })
   })
   function addMemberHTML(user_name, user_id){
-    var new_html = `<div class='chat-group-user'>
+    var new_html = `<div class='chat-group-user chat-group-user__indicated'>
                       <input name='group[user_ids][]' type='hidden' value='${user_id}'>
                       <p class='chat-group-user__name'>${user_name}</p>
                       <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
@@ -47,7 +47,7 @@ $(document).on('turbolinks:load', function(){
     $('.clearfix-candidate').remove();
     $('.chat-group-form__field--right-name').append(new_html);
   })
-  $(document).on('click', '.chat-group-user', function(){
-    $(this).remove();
+  $(document).on('click', '.js-remove-btn', function(){
+    $(this).parent().remove();
   })
 })
