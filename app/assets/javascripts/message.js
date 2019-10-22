@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function(){
   function buildHTML(message){
       var message_image = (message.image_url !== null) ? `<img src="${message.image_url}" class='lower-message__image'>` : `<p></p>`;
-      var html = `<div class="message">
+      var html = `<div class="message" data-message-id="${message.id}">
                     <div class="upper-message">
                       <div class="upper-message__user-name">
                         ${message.user_name}
@@ -46,4 +46,54 @@ $(document).on('turbolinks:load', function(){
       $('.form__submit').removeAttr('disabled')
     })
   })
+  var buildMessageHTML = function(message){
+    var contentHTML = (message.content !== null) ?
+                       `<p class="lower-message__content">
+                        ${message.content}
+                        </p>`
+                        : `<p></p>`;
+    var imageHTML = (message.image_url !== null) ? `<img src="${message.image_url}" class='lower-message__image'>` : `<p></p>`;
+    var html = `<div class="message" data-message-id='${message.id}'>
+                  <div class="upper-message">
+                    <div class="upper-message__user-name">
+                      ${message.user_name}
+                    </div>
+                    <div class="upper-message__date">
+                      ${message.created_at}
+                    </div>
+                  </div>
+                  <div class="lower-message">
+                    ${contentHTML}
+                    ${imageHTML}
+                  </div>
+                </div>`
+                return html;
+  }
+  $(function(){
+    var group_id = window.location.href.match(/\/groups\/\d+\/messages/);
+    var reloadMessages = function(){
+      var last_message_id = $('.message:last').data('message-id');
+      $.ajax({
+        url: 'api/messages',
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id, group_id: group_id}
+      })
+      .done(function(messages){
+        if (messages !== null) {
+          messages.forEach(function(message){
+          $('.messages').append(buildMessageHTML(message));
+          })
+          $('.messages').animate({
+            scrollTop: $('.messages')[0].scrollHeight
+          })
+        }
+      })
+      .fail(function(){
+        console.log('error');
+      });
+    }
+    setInterval(reloadMessages, 1500);
+  })
 });
+
