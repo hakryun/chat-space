@@ -1,7 +1,10 @@
 $(document).on('turbolinks:load', function(){
   function buildHTML(message){
+      var contentHTML = (message.content !== null) ? `<p class="lower-message__content">
+                                                        ${message.content}
+                                                      </p>`: `<p></p>`;
       var message_image = (message.image_url !== null) ? `<img src="${message.image_url}" class='lower-message__image'>` : `<p></p>`;
-      var html = `<div class="message">
+      var html = `<div class="message" data-message-id="${message.id}">
                     <div class="upper-message">
                       <div class="upper-message__user-name">
                         ${message.user_name}
@@ -11,10 +14,8 @@ $(document).on('turbolinks:load', function(){
                       </div>          
                     </div>
                     <div class="lower-message">
-                      <p class="lower-message__content">
-                        ${message.content} 
-                      </p>                      
-                        ${message_image}
+                      ${contentHTML}        
+                      ${message_image}
                     </div>
                   </div>`
       return html;
@@ -46,4 +47,31 @@ $(document).on('turbolinks:load', function(){
       $('.form__submit').removeAttr('disabled')
     })
   })
+  $(function(){
+    var group_id = window.location.href.match(/\/groups\/\d+\/messages/);
+    var reloadMessages = function(){
+      var last_message_id = $('.message:last').data('message-id');
+      $.ajax({
+        url: 'api/messages',
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id, group_id: group_id}
+      })
+      .done(function(messages){
+        if (messages !== null) {
+          messages.forEach(function(message){
+          $('.messages').append(buildHTML(message));
+          })
+          $('.messages').animate({
+            scrollTop: $('.messages')[0].scrollHeight
+          })
+        }
+      })
+      .fail(function(){
+        alert('error');
+      });
+    }
+    setInterval(reloadMessages, 1500);
+  })
 });
+
