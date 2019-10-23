@@ -4,6 +4,7 @@ $(document).on('turbolinks:load', function(){
                                                         ${message.content}
                                                       </p>`: `<p></p>`;
       var message_image = (message.image_url !== null) ? `<img src="${message.image_url}" class='lower-message__image'>` : `<p></p>`;
+
       var html = `<div class="message" data-message-id="${message.id}">
                     <div class="upper-message">
                       <div class="upper-message__user-name">
@@ -60,7 +61,7 @@ $(document).on('turbolinks:load', function(){
       .done(function(messages){
         if (messages !== null) {
           messages.forEach(function(message){
-          $('.messages').append(buildHTML(message));
+            $('.messages').append(buildHTML(message));
           })
           $('.messages').animate({
             scrollTop: $('.messages')[0].scrollHeight
@@ -71,7 +72,7 @@ $(document).on('turbolinks:load', function(){
         alert('error');
       });
     }
-    setInterval(reloadMessages, 1500);
+    setInterval(reloadMessages, 5000);
   })
 });
 
