@@ -50,29 +50,31 @@ $(document).on('turbolinks:load', function(){
   })
   $(function(){
     var group_id = window.location.href.match(/\/groups\/\d+\/messages/);
-    var reloadMessages = function(){
-      var last_message_id = $('.message:last').data('message-id');
-      $.ajax({
-        url: 'api/messages',
-        type: 'get',
-        dataType: 'json',
-        data: {id: last_message_id, group_id: group_id}
-      })
-      .done(function(messages){
-        if (messages !== null) {
-          messages.forEach(function(message){
-            $('.messages').append(buildHTML(message));
-          })
-          $('.messages').animate({
-            scrollTop: $('.messages')[0].scrollHeight
-          })
-        }
-      })
-      .fail(function(){
-        alert('error');
-      });
+    if (group_id !== null){
+      var reloadMessages = function(){
+        var last_message_id = $('.message:last').data('message-id');
+        $.ajax({
+          url: 'api/messages',
+          type: 'get',
+          dataType: 'json',
+          data: {id: last_message_id, group_id: group_id}
+        })
+        .done(function(messages){
+          if (messages !== null) {
+            messages.forEach(function(message){
+              $('.messages').append(buildHTML(message));
+            })
+            $('.messages').animate({
+              scrollTop: $('.messages')[0].scrollHeight
+            })
+          }
+        })
+        .fail(function(){
+          alert('error');
+        });
+      }
+      setInterval(reloadMessages, 5000);
     }
-    setInterval(reloadMessages, 10000);
   })
 });
 
