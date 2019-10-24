@@ -72,7 +72,7 @@ $(document).on('turbolinks:load', function(){
         alert('error');
       });
     }
-    setInterval(reloadMessages, 5000);
+    setInterval(reloadMessages, 10000);
   })
 });
 
