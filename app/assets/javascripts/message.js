@@ -42,7 +42,7 @@ $(document).on('turbolinks:load', function(){
       })
     })
     .fail(function(){
-      alert('error');
+      // alert('error');
     })
     .always(function(){
       $('.form__submit').removeAttr('disabled')
@@ -71,7 +71,7 @@ $(document).on('turbolinks:load', function(){
           }
         })
         .fail(function(){
-          alert('error');
+          // alert('error');
         });
       }
       setInterval(reloadMessages, 5000);
