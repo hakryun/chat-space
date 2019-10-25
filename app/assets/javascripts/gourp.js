@@ -17,6 +17,7 @@ $(document).on('turbolinks:load', function(){
       dataType: 'json'
     })
     .done(function(users){
+      console.log(1)
       $('#user-search-result').empty();
       if (users.length !== 0) {
         users.forEach(function(user){
@@ -39,13 +40,14 @@ $(document).on('turbolinks:load', function(){
                     </div>`
     return new_html;
   }
-  $(document).on('click', '.chat-group-user__btn--add', function(){
+  $('#user-search-result').on('click', '.chat-group-user__btn--add', function(){
     var user_name = $(this).data('user-name');
     var user_id = $(this).data('user-id');
     var new_html = addMemberHTML(user_name, user_id);     
     $('#user-search-field').val('');
     $('.clearfix-candidate').remove();
     $('.chat-group-form__field--right-name').append(new_html);
+    console.log(2)
   })
   $(document).on('click', '.js-remove-btn', function(){
     $(this).parent().remove();

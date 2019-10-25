@@ -50,6 +50,7 @@ $(document).on('turbolinks:load', function(){
   })
   $(function(){
     var group_id = window.location.href.match(/\/groups\/\d+\/messages/);
+    console.log(group_id);
     if (group_id !== null){
       var reloadMessages = function(){
         var last_message_id = $('.message:last').data('message-id');
